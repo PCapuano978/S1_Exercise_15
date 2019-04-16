@@ -48,5 +48,18 @@ window.addEventListener("load", function () {
 
       // Retrieve the field/value pairs from the URL.
       var formData = location.search.slice(1);
+      formData = formData.replace(/\+/g, " ");
+      formData = decodeURIComponent(formData);
+      var formField = formData.split(/[&=]/g);
+
+      // Write the field values to the order form.
+      document.forms.order.elements.orderDate.value = formField[1];
+      document.forms.order.elements.modelName.value = formField[5];
+      document.forms.order.elements.qty.value = formField[7];
+      document.forms.order.elements.protectionName.value = formField[9];
+      document.forms.order.elements.protectionCost.value = formField[13];
+      document.forms.order.elements.subtotal.value = formField[15];
+      document.forms.order.elements.salesTax.value = formField[19];
+      document.forms.order.elements.totalCost.value = formField[21];
 
 });
